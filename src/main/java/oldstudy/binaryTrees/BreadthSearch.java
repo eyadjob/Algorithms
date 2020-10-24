@@ -55,15 +55,12 @@ public class BreadthSearch {
 
             if ( node.left != null) {
                 queue.add(node.left);
-
             }
 
             if ( node.right != null) {
                 queue.add(node.right);
             }
-
         }
-
     }
 
     public static void main(String[] args) {

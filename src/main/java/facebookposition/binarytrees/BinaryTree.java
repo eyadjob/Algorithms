@@ -1,16 +1,20 @@
 package facebookposition.binarytrees;
 
-import facebookposition.binarytrees.PrintBinaryTree;
+public class BinaryTree {
 
-public  class BinaryTree {
-
-    public Nod root;
+    public TreeNod root;
 
     public BinaryTree(int v) {
-        this.root = new Nod(v);
+        this.root = new TreeNod(v);
     }
 
-//    public BinaryTree buildSortedBT(int[][] values) {
-//
-//    }
+    public TreeNod buildSortedBT(int[] values, TreeNod root) {
+        root.v = values[0];
+        for (int i = 0; i < values.length; i++) {
+                    if ( i == 0) continue;
+                    if (root.v >= values[i]) root.left = new TreeNod(values[i]);
+                    else root.right = new TreeNod(values[i]);
+        }
+        return root;
+    }
 }
