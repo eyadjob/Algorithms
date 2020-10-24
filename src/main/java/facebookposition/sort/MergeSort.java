@@ -44,7 +44,7 @@ public class MergeSort {
             System.out.println();
             rightArray[i] = arr[mid + 1 + i];
             System.out.println();
-          
+
         }
 
         int i = 0, j = 0;
