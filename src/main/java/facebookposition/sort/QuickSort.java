@@ -30,7 +30,7 @@ public class QuickSort {
                 loc = right;
             }
             if (flag != 1) {
-                while (arr[loc] >= arr[left] && loc != left) 
+                while (arr[loc] >= arr[left] && loc != left)
                     left++;
 
                 if (loc == left) {
