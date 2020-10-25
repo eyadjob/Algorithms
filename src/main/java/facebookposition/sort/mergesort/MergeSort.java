@@ -1,4 +1,4 @@
-package facebookposition.sort;
+package facebookposition.sort.mergesort;
 
 import java.util.Arrays;
 import java.util.concurrent.atomic.AtomicInteger;

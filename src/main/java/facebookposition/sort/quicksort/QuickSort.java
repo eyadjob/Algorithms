@@ -1,4 +1,4 @@
-package facebookposition.sort;
+package facebookposition.sort.quicksort;
 
 import java.util.Arrays;
 
@@ -39,7 +39,7 @@ public class QuickSort {
                     temp = arr[loc];
                     arr[loc] = arr[left];
                     arr[left] = temp;
-                    loc = left;
+
                 }
             }
         }
