@@ -68,6 +68,8 @@ public class PrintBinaryTree {
         System.out.println(maxDepth(bt.root));
         System.out.println("-------------------------------------");
         System.out.println(maximumWidthOfTree(bt.root));
+        System.out.println("-------------------------------------");
+        System.out.println(checkBTAreEquals(bt.root, bt2.root));
 
 
     }
@@ -167,7 +169,10 @@ public class PrintBinaryTree {
     private static int ans = 0;
 
 
-
+    public static boolean checkBTAreEquals(TreeNod root1, TreeNod root2) {
+        if ( root1 == null && root2==null) return true;
+        return (root1 == null) == (root2 == null) && root1.v == root2.v && checkBTAreEquals(root1.left, root2.left) && checkBTAreEquals(root1.right, root2.right);
+    }
 
 }
 

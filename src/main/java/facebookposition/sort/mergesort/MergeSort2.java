@@ -1,4 +1,4 @@
-package facebookposition.sort;
+package facebookposition.sort.mergesort;
 
 import java.util.Arrays;
 
@@ -7,6 +7,9 @@ public class MergeSort2 {
     public static void main(String[] args) {
         int[] arr = {53,2,67,3,11,73,12};
         System.out.println(Arrays.toString(divide(arr,0,arr.length-1)));
+
+        int[] arr2 = {134, 5, 11323, 64, 12, 35, 1991, 3, 16, 03};
+        System.out.println(Arrays.toString(divide(arr2,0,arr2.length-1)));
     }
 
     public static int[] divide(int[] arr, int beg, int end) {
@@ -28,7 +31,6 @@ public class MergeSort2 {
         for (int i = 0; i < ls; i++) {
             leftArray[i] = arr[beg + i];
         }
-
         for (int i = 0; i < rs; i++) {
             rightArray[i] = arr[mid + 1 + i];
         }
@@ -56,7 +58,6 @@ public class MergeSort2 {
             j++;
             k++;
         }
-
         return arr;
     }
 }
