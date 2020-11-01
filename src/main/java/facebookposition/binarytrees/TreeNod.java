@@ -3,9 +3,9 @@ package facebookposition.binarytrees;
 public class TreeNod {
     public TreeNod left;
     public TreeNod right;
-    int v;
+    public int value;
 
     public TreeNod(int value) {
-        this.v = value;
+        this.value = value;
     }
 }
