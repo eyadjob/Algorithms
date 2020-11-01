@@ -1,4 +1,4 @@
-package facebookposition;
+package facebookposition.fbquestions;
 
 public class OneEditAway {
 
@@ -42,10 +42,10 @@ public class OneEditAway {
         }
             // we are at replacing possibility
             int count = 0;
-            for (int i = 0; i < b_sb.length(); i++) {
-                if (a_sb.charAt(i) != b_sb.charAt(i))
-                    count++;
-            }
-            return count < 2;
+        for (int i = 0; i < b_sb.length(); i++) {
+            if (a_sb.charAt(i) != b_sb.charAt(i))
+                count++;
+        }
+        return count < 2;
     }
 }
