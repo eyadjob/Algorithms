@@ -29,7 +29,6 @@ class YearOfMostPopulation {
             } else {
                 personCountPerYear.put(ar[i][0], personCountPerYear.get(ar[i][0]) + 1);
             }
-
             if (personCountPerYear.get(ar[i][1]) == null) {
                 personCountPerYear.put(ar[i][1], -1);
             } else {
