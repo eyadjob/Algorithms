@@ -2,10 +2,7 @@ package facebookposition.binarytrees;
 
 
 
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Queue;
+import java.util.*;
 
 public class PrintBinaryTree {
 
@@ -71,13 +68,16 @@ public class PrintBinaryTree {
         System.out.println("-------------------------------------");
         System.out.println(checkBTAreEquals(bt.root, bt2.root));
 
+        System.out.println("--------------Pre Order Traversal -----------------------");
+        System.out.println(BTpreOrderTraversal(bt.root));
+
 
     }
 
     public static void printBTDepthFirst(TreeNod root) {
         if (root == null) return;
 
-        System.out.println(root.v);
+        System.out.print(root.value+ " ");
         printBTDepthFirst(root.left);
         printBTDepthFirst(root.right);
     }
@@ -92,7 +92,7 @@ public class PrintBinaryTree {
         qu.add(root);
         while (!qu.isEmpty()) {
             TreeNod te = qu.remove();
-            System.out.println(te.v);
+            System.out.println(te.value);
             if (te.left != null) qu.add(te.left);
             if (te.right != null) qu.add(te.right);
         }
@@ -104,7 +104,7 @@ public class PrintBinaryTree {
         btq.add(root);
         while (!btq.isEmpty()) {
             TreeNod te = btq.remove();
-            System.out.print(te.v);
+            System.out.print(te.value);
             if (te.left != null) btq.add(te.left);
             if (te.right != null) btq.add(te.right);
             System.out.println();
@@ -133,7 +133,7 @@ public class PrintBinaryTree {
 
     public static boolean compareBinaryTreeTheSame(TreeNod root1, TreeNod root2) {
         if (root1 == null && root2 == null) return true;
-        return (root1 == null) == (root2 == null) && root1.v == root2.v && compareBinaryTreeTheSame(root1.left, root2.left) && compareBinaryTreeTheSame(root1.right, root2.right);
+        return (root1 == null) == (root2 == null) && root1.value == root2.value && compareBinaryTreeTheSame(root1.left, root2.left) && compareBinaryTreeTheSame(root1.right, root2.right);
     }
 
 
@@ -144,7 +144,7 @@ public class PrintBinaryTree {
         btq.add(root);
         while (!btq.isEmpty()) {
             TreeNod te = btq.remove();
-            if (te.v == v) return true;
+            if (te.value == v) return true;
             if (te.left != null) btq.add(te.left);
             if (te.right != null) btq.add(te.right);
         }
@@ -171,7 +171,24 @@ public class PrintBinaryTree {
 
     public static boolean checkBTAreEquals(TreeNod root1, TreeNod root2) {
         if ( root1 == null && root2==null) return true;
-        return (root1 == null) == (root2 == null) && root1.v == root2.v && checkBTAreEquals(root1.left, root2.left) && checkBTAreEquals(root1.right, root2.right);
+        return (root1 == null) == (root2 == null) && root1.value == root2.value && checkBTAreEquals(root1.left, root2.left) && checkBTAreEquals(root1.right, root2.right);
+    }
+
+    public static List<Integer> BTpreOrderTraversal(TreeNod root) {
+        List<Integer> list = new ArrayList();
+        Stack<TreeNod> stack = new Stack();
+        TreeNod node = root;
+        while(node!= null || stack.size() >0){
+            if(node != null){
+                list.add(node.value);
+                stack.push(node);
+                node = node.left;
+            }else{
+                node = stack.pop();
+                node = node.right;
+            }
+        }
+        return list;
     }
 
 }
