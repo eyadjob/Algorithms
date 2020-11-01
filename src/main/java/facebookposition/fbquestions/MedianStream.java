@@ -15,20 +15,19 @@ public class MedianStream {
 
     public static int[] findMedian(int[] arr) {
         List<Integer> re = new ArrayList<>();
-        for ( int i =0 ; i < arr.length; i++) {
-            if ( i == 0) re.add(arr[i]);
-            int[] temp = new int[i+1];
-            for ( int k =0; k <= i;k++) {
+        for (int i = 0; i < arr.length; i++) {
+            if (i == 0) re.add(arr[i]);
+            int[] temp = new int[i + 1];
+            for (int k = 0; k <= i; k++) {
                 temp[k] = arr[k];
             }
             Arrays.sort(temp);
-            if ( temp.length%2 == 0 ) re.add((int) Math.ceil((temp[(temp.length/2)-1] + temp[(int)Math.floor(temp.length/2)]) / 2 ));
-                else
-                    re.add(temp[(int)Math.ceil(temp.length/2)]);
-
-
+            if (temp.length % 2 == 0)
+                re.add((int) Math.ceil((temp[(temp.length / 2) - 1] + temp[(int) Math.floor(temp.length / 2)]) / 2));
+            else
+                re.add(temp[(int) Math.ceil(temp.length / 2)]);
         }
-
+        return re.stream().mapToInt(d -> d).toArray();
     }
 
 }
