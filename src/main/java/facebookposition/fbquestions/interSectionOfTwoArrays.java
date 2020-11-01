@@ -1,4 +1,4 @@
-package facebookposition;
+package facebookposition.fbquestions;
 
 public class interSectionOfTwoArrays {
 

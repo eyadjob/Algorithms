@@ -1,4 +1,4 @@
-package facebookposition;
+package facebookposition.fbquestions;
 
 import java.util.Map;
 import java.util.TreeMap;

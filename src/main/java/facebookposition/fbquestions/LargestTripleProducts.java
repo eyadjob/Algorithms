@@ -1,4 +1,4 @@
-package facebookposition;
+package facebookposition.fbquestions;
 
 import java.util.ArrayList;
 import java.util.Arrays;
