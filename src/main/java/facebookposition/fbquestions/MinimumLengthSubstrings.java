@@ -34,8 +34,4 @@ public class MinimumLengthSubstrings {
         }
         return max + 1;
     }
-
-
-
-
 }
