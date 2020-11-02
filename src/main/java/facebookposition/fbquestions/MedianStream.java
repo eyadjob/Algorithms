@@ -16,7 +16,10 @@ public class MedianStream {
     public static int[] findMedian(int[] arr) {
         List<Integer> re = new ArrayList<>();
         for (int i = 0; i < arr.length; i++) {
-            if (i == 0) re.add(arr[i]);
+            if (i == 0) {
+                re.add(arr[i]);
+                continue;
+            }
             int[] temp = new int[i + 1];
             for (int k = 0; k <= i; k++) {
                 temp[k] = arr[k];
