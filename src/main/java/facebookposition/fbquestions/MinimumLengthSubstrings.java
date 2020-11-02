@@ -22,15 +22,15 @@ public class MinimumLengthSubstrings {
         Map<Character, List<Integer>> sInHashMap = new LinkedHashMap<>();
         AtomicInteger i = new AtomicInteger(0);
         while ( i.get() < s.length()) {
-            sInHashMap.put(s.charAt(i.get()), sInHashMap.get(s.charAt(i.get())) == null ? new ArrayList<>(){{add(i.getAndIncrement());}} : sInHashMap.get(s.charAt(i.getAndIncrement())));
+            sInHashMap.put(s.charAt(i.get()), sInHashMap.get(s.charAt(i.get())) == null ? new ArrayList<Integer>(){{add(i.getAndIncrement());}} : sInHashMap.get(s.charAt(i.getAndIncrement())));
         }
         int max = 0;
-        for (int k =0; k < tChars.length; k++ )  {
-            if (sInHashMap.get(tChars[k]) == null || sInHashMap.get(tChars[k]).size() == 0) return -1;
-            if (max < sInHashMap.get(tChars[k]).get(0)) {
-                max = sInHashMap.get(tChars[k]).get(0);
+        for (char tChar : tChars) {
+            if (sInHashMap.get(tChar) == null || sInHashMap.get(tChar).size() == 0) return -1;
+            if (max < sInHashMap.get(tChar).get(0)) {
+                max = sInHashMap.get(tChar).get(0);
             }
-            sInHashMap.get(tChars[k]).remove(0);
+            sInHashMap.get(tChar).remove(0);
         }
         return max + 1;
     }
