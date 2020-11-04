@@ -1,8 +1,10 @@
 package facebookposition.fbquestions;
 
+
 import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class CountingTriangles {
 
@@ -47,24 +49,44 @@ public class CountingTriangles {
         arr_5.add(new Sides(8, 5, 9));
         int expected_5 = 1;
         System.out.println(countDistinctTriangles(arr_5));
+        int[][][] test = {{{6}, {1, 2, 3}}, {{6}, {1, 2, 3}}};
 
 
     }
 
 
     public static int countDistinctTriangles(ArrayList<Sides> arr) {
-        Set<Integer> distSums = new HashSet<>();
-        for ( Sides e : arr){
-            distSums.add(e.a + e.b + e.c);
+        Map<Integer, List<List<Integer>>> triangles = new HashMap<>();
+        for (Sides e : arr) {
+            int sidesSum = e.a + e.b + e.c;
+            if (triangles.get(sidesSum) == null) {
+                List<Integer> sides = new ArrayList<>() {{add(e.a);add(e.b);add(e.c);}};
+                List<List<Integer>> similarTriangles = new ArrayList<>();
+                similarTriangles.add(sides);
+                triangles.put(sidesSum, similarTriangles);
+            } else {
+                boolean addFlag = false;
+                for (List<Integer> lv : triangles.get(sidesSum)) {
+                       if (!lv.contains(e.a) && !lv.contains(e.b) && !lv.contains(e.c)) {
+                           addFlag = true;
+                           break;
+                       }
+                    }
+                if (addFlag) {
+                    List<Integer> diffSumTria = new ArrayList<>() {{add(e.a);add(e.b);add(e.c);}};
+                    triangles.get(sidesSum).add(diffSumTria);
+                }
+            }
         }
-        return distSums.size();
+        return triangles.values().stream().mapToInt(List::size).sum();
     }
 
 
-   public static class Sides{
+    public static class Sides {
         int a;
         int b;
         int c;
+
         public Sides(int a, int b, int c) {
             this.a = a;
             this.b = b;
