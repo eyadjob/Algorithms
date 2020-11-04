@@ -20,20 +20,7 @@ public class BalancedSplit {
         System.out.println(balancedSplitExists(arr_2));
 
     }
-
-    public static boolean balancedSplitExists2(int[] arr) {
-        Arrays.sort(arr);
-        AtomicInteger start = new AtomicInteger(0);
-        AtomicInteger end = new AtomicInteger(arr.length-1);
-        while ( start.get() < end.get()) {
-          int leftSum = Arrays.stream(arr).filter(n -> n < start.get()).boxed().mapToInt(d -> d).sum();
-          int rightSum = Arrays.stream(arr).filter(n -> n > start.get() && n < end.get() ).boxed().mapToInt(d -> d).sum();
-          if ( leftSum == rightSum) return true;
-          start.getAndIncrement();
-        }
-    return false;
-    }
-
+    
 
     public static boolean balancedSplitExists(int[] arr) {
         Arrays.sort(arr);
