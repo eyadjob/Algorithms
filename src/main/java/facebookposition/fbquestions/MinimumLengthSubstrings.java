@@ -13,8 +13,7 @@ public class MinimumLengthSubstrings {
         String s2 = "bfbeadbcbcbfeaaeefcddcccbbbfaaafdbebedddf";
         String t2 = "cbccfafebccdccebdd";
         System.out.println(minLengthSubstring2(s2, t2));
-
-
+        
     }
 
     public static int minLengthSubstring2(String s, String t) {
