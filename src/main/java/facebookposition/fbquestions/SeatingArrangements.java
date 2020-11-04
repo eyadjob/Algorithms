@@ -18,8 +18,9 @@ public class SeatingArrangements {
     public static int minOverallAwkwardness(int[] arr) {
         Arrays.sort(arr);
         int te = arr[0];
-        arr[0] = arr[arr.length/2];
-        arr[arr.length/2] =te;
+        int i = arr.length % 2 == 0 ? (arr.length / 2) - 1 : (arr.length / 2);
+        arr[0] = arr[i];
+        arr[i] =te;
         return arr[arr.length-1] - arr[0];
     }
 }
