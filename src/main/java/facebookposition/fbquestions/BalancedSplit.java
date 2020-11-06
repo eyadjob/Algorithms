@@ -20,7 +20,7 @@ public class BalancedSplit {
         System.out.println(balancedSplitExists(arr_2));
 
     }
-    
+
 
     public static boolean balancedSplitExists(int[] arr) {
         Arrays.sort(arr);
