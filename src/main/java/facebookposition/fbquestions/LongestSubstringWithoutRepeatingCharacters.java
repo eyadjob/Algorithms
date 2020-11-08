@@ -7,34 +7,29 @@ public class LongestSubstringWithoutRepeatingCharacters {
 
     public static void main(String[] args) {
 
-
-                String s6 = "dvdf";
+        String s6 = "dvdf";
         System.out.println(lengthOfLongestSubstring(s6));
 
         String s8 = "abb";
         System.out.println(lengthOfLongestSubstring(s8));
 
-//        String s = "abcabcbb";
-//        System.out.println(lengthOfLongestSubstring(s));
-//
-//        String s2 = "bbbbb";
-//        System.out.println(lengthOfLongestSubstring(s2));
-//
-//        String s3 = "pwwkew";
-//        System.out.println(lengthOfLongestSubstring(s3));
-//
-//        String s4 = "";
-//        System.out.println(lengthOfLongestSubstring(s4));
-//
-//        String s5 = " ";
-//        System.out.println(lengthOfLongestSubstring(s5));
-//
+        String s = "abcabcbb";
+        System.out.println(lengthOfLongestSubstring(s));
 
-//        String s7 = "bbtablud";
-//        System.out.println(lengthOfLongestSubstring(s7));
+        String s2 = "bbbbb";
+        System.out.println(lengthOfLongestSubstring(s2));
 
+        String s3 = "pwwkew";
+        System.out.println(lengthOfLongestSubstring(s3));
 
+        String s4 = "";
+        System.out.println(lengthOfLongestSubstring(s4));
 
+        String s5 = " ";
+        System.out.println(lengthOfLongestSubstring(s5));
+
+        String s7 = "bbtablud";
+        System.out.println(lengthOfLongestSubstring(s7));
 
     }
 
