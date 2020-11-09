@@ -35,7 +35,6 @@ public class RomanToInteger {
         values.put('C', 100);
         values.put('D', 500);
         values.put('M', 1000);
-        StringBuilder sb = new StringBuilder();
         for (int i = 0; i < s.length(); i++) {
             if (i < s.length() - 1) {
                if (s.charAt(i) == 'I' && s.charAt(i + 1) == 'V' || s.charAt(i) == 'I' && s.charAt(i + 1) == 'X' ||  s.charAt(i) == 'X' && s.charAt(i + 1) == 'L' || s.charAt(i) == 'X' && s.charAt(i + 1) == 'C' || s.charAt(i) == 'C' && s.charAt(i + 1) == 'D' || s.charAt(i) == 'C' && s.charAt(i + 1) == 'M') {
