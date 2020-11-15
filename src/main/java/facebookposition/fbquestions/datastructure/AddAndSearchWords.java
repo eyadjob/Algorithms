@@ -63,11 +63,14 @@ public class AddAndSearchWords {
 
             for (char ch : word.toCharArray()) {
                 if (!node.children.containsKey(ch)) {
-//                    if ( ch == '.') {
-//                        for ( char x : node.children.keySet()) {
-//                            TrieNode child = node.children.get(x);
-//
+//                    if (ch == '.') {
+//                    for (char x : node.children.keySet()) {
+//                        TrieNode child = node.children.get(x);
+//                        if (searchInNode(word.substring(i + 1), child)) {
+//                            return true;
 //                        }
+//                    }
+//                }
                     return false;
                 } else {
                     node = node.children.get(ch);
