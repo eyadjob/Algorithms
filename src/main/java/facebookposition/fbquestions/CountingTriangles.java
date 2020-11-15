@@ -92,9 +92,6 @@ public class CountingTriangles {
             this.b = b;
             this.c = c;
         }
-
-
     }
-
 
 }
