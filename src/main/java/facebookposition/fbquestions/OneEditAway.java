@@ -3,14 +3,13 @@ package facebookposition.fbquestions;
 public class OneEditAway {
 
     public static void main(String[] args) {
-
+        System.out.println(oneEditApart("ac", "a"));
         System.out.println(oneEditApart("cat", "dog"));
         System.out.println(oneEditApart("cat", "cats"));
         System.out.println(oneEditApart("cat", "cut"));
         System.out.println(oneEditApart("cat", "cast"));
         System.out.println(oneEditApart("cat", "at"));
         System.out.println(oneEditApart("cat", "act"));
-
     }
 
     public static boolean oneEditApart(String a, String b) {
@@ -18,10 +17,10 @@ public class OneEditAway {
         StringBuilder b_sb = new StringBuilder(b);
         if (b_sb.length() < a_sb.length()) {
             int re = 0;
-            for (int i = 0; i < b_sb.length(); i++) {
-                if (b_sb.charAt(i) != a_sb.charAt(i)) {
+            for (int i = 0; i < a_sb.length(); i++) {
+                if (b_sb.charAt(Math.min(i,b_sb.length()-1)) != a_sb.charAt(i)) {
                     a_sb.deleteCharAt(i);
-                    re = 1;
+                    re = i;
                     break;
                 }
             }
