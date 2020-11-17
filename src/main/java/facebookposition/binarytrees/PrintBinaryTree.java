@@ -16,30 +16,30 @@ public class PrintBinaryTree {
 //           6
 //         2
         BinaryTree bt = new BinaryTree(4);
-        bt.root.left = new TreeNod(7);
-        bt.root.right = new TreeNod(9);
-        bt.root.right.right = new TreeNod(3);
-        bt.root.left.left = new TreeNod(10);
-        bt.root.left.right = new TreeNod(2);
-        bt.root.left.right.right = new TreeNod(6);
-        bt.root.left.right.right.left = new TreeNod(2);
+        bt.root.left = new TreeNode(7);
+        bt.root.right = new TreeNode(9);
+        bt.root.right.right = new TreeNode(3);
+        bt.root.left.left = new TreeNode(10);
+        bt.root.left.right = new TreeNode(2);
+        bt.root.left.right.right = new TreeNode(6);
+        bt.root.left.right.right.left = new TreeNode(2);
 
 
         BinaryTree bt2 = new BinaryTree(4);
-        bt2.root.left = new TreeNod(7);
-        bt2.root.right = new TreeNod(9);
-        bt2.root.right.right = new TreeNod(3);
-        bt2.root.left.left = new TreeNod(10);
-        bt2.root.left.right = new TreeNod(2);
-        bt2.root.left.right.right = new TreeNod(6);
-        bt2.root.left.right.right.left = new TreeNod(2);
+        bt2.root.left = new TreeNode(7);
+        bt2.root.right = new TreeNode(9);
+        bt2.root.right.right = new TreeNode(3);
+        bt2.root.left.left = new TreeNode(10);
+        bt2.root.left.right = new TreeNode(2);
+        bt2.root.left.right.right = new TreeNode(6);
+        bt2.root.left.right.right.left = new TreeNode(2);
 //        bt2.root.ln.rn.rn.ln.ln = new Nod(1);
 
         BinaryTree bt3 = new BinaryTree(3);
-        bt3.root.left = new TreeNod(9);
-        bt3.root.right = new TreeNod(20);
-        bt3.root.right.right = new TreeNod(7);
-        bt3.root.right.left = new TreeNod(15);
+        bt3.root.left = new TreeNode(9);
+        bt3.root.right = new TreeNode(20);
+        bt3.root.right.right = new TreeNode(7);
+        bt3.root.right.left = new TreeNode(15);
 
         printBTDepthFirst(bt.root);
         System.out.println();
@@ -74,7 +74,7 @@ public class PrintBinaryTree {
 
     }
 
-    public static void printBTDepthFirst(TreeNod root) {
+    public static void printBTDepthFirst(TreeNode root) {
         if (root == null) return;
 
         System.out.print(root.value+ " ");
@@ -82,28 +82,28 @@ public class PrintBinaryTree {
         printBTDepthFirst(root.right);
     }
 
-    public static void printBTBreadthFirst(TreeNod root) {
+    public static void printBTBreadthFirst(TreeNode root) {
 
         if (root == null) {
             return;
         }
 
-        Queue<TreeNod> qu = new LinkedList<>();
+        Queue<TreeNode> qu = new LinkedList<>();
         qu.add(root);
         while (!qu.isEmpty()) {
-            TreeNod te = qu.remove();
+            TreeNode te = qu.remove();
             System.out.println(te.value);
             if (te.left != null) qu.add(te.left);
             if (te.right != null) qu.add(te.right);
         }
     }
 
-    public static void printBtWithStyle(TreeNod root) {
+    public static void printBtWithStyle(TreeNode root) {
         if (root == null) return;
-        Queue<TreeNod> btq = new LinkedList<>();
+        Queue<TreeNode> btq = new LinkedList<>();
         btq.add(root);
         while (!btq.isEmpty()) {
-            TreeNod te = btq.remove();
+            TreeNode te = btq.remove();
             System.out.print(te.value);
             if (te.left != null) btq.add(te.left);
             if (te.right != null) btq.add(te.right);
@@ -111,11 +111,11 @@ public class PrintBinaryTree {
         }
     }
 
-    public static int maxDepth(TreeNod root) {
+    public static int maxDepth(TreeNode root) {
         return (root == null) ? 0 : Math.max(maxDepth(root.left), maxDepth(root.right)) + 1;
     }
 
-    public static void getDepth(TreeNod root, int max) {
+    public static void getDepth(TreeNode root, int max) {
         ++max;
         if (root == null) {
             return;
@@ -131,19 +131,19 @@ public class PrintBinaryTree {
     }
 
 
-    public static boolean compareBinaryTreeTheSame(TreeNod root1, TreeNod root2) {
+    public static boolean compareBinaryTreeTheSame(TreeNode root1, TreeNode root2) {
         if (root1 == null && root2 == null) return true;
         return (root1 == null) == (root2 == null) && root1.value == root2.value && compareBinaryTreeTheSame(root1.left, root2.left) && compareBinaryTreeTheSame(root1.right, root2.right);
     }
 
 
-    public static boolean breadthFirstSearch(TreeNod root, int v) {
+    public static boolean breadthFirstSearch(TreeNode root, int v) {
         if (root == null) return false;
 
-        Queue<TreeNod> btq = new LinkedList<>();
+        Queue<TreeNode> btq = new LinkedList<>();
         btq.add(root);
         while (!btq.isEmpty()) {
-            TreeNod te = btq.remove();
+            TreeNode te = btq.remove();
             if (te.value == v) return true;
             if (te.left != null) btq.add(te.left);
             if (te.right != null) btq.add(te.right);
@@ -152,13 +152,13 @@ public class PrintBinaryTree {
 
     }
 
-    public static long maximumWidthOfTree(TreeNod root) {
+    public static long maximumWidthOfTree(TreeNode root) {
 
 
         return widthHelper(root, 0, 1, new ArrayList<>());
     }
 
-    public static long widthHelper(TreeNod root, int depth, int index, List<Integer> list) {
+    public static long widthHelper(TreeNode root, int depth, int index, List<Integer> list) {
         if (root == null) return 0;
         if (depth == list.size()) list.add(index);
         int cw = index - list.get(depth) + 1;
@@ -169,15 +169,15 @@ public class PrintBinaryTree {
     private static int ans = 0;
 
 
-    public static boolean checkBTAreEquals(TreeNod root1, TreeNod root2) {
+    public static boolean checkBTAreEquals(TreeNode root1, TreeNode root2) {
         if ( root1 == null && root2==null) return true;
         return (root1 == null) == (root2 == null) && root1.value == root2.value && checkBTAreEquals(root1.left, root2.left) && checkBTAreEquals(root1.right, root2.right);
     }
 
-    public static List<Integer> BTpreOrderTraversal(TreeNod root) {
+    public static List<Integer> BTpreOrderTraversal(TreeNode root) {
         List<Integer> list = new ArrayList();
-        Stack<TreeNod> stack = new Stack();
-        TreeNod node = root;
+        Stack<TreeNode> stack = new Stack();
+        TreeNode node = root;
         while(node!= null || stack.size() >0){
             if(node != null){
                 list.add(node.value);
