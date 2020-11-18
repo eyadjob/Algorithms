@@ -7,7 +7,7 @@ public class NumberOfVisibleNodesOnLeftSide {
 
     int visibleNodes(Node root) {
         // Write your code here
-
+        return 0;
     }
 
 }

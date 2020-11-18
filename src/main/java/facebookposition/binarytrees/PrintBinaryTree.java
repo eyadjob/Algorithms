@@ -1,12 +1,11 @@
 package facebookposition.binarytrees;
 
-
-
 import java.util.*;
 
 public class PrintBinaryTree {
 
     static int counter = 0;
+    private static final int ans = 0;
 
     public static void main(String[] args) {
 
@@ -15,61 +14,61 @@ public class PrintBinaryTree {
 //    10   2     3
 //           6
 //         2
-        BinaryTree bt = new BinaryTree(4);
-        bt.root.left = new TreeNode(7);
-        bt.root.right = new TreeNode(9);
-        bt.root.right.right = new TreeNode(3);
-        bt.root.left.left = new TreeNode(10);
-        bt.root.left.right = new TreeNode(2);
-        bt.root.left.right.right = new TreeNode(6);
-        bt.root.left.right.right.left = new TreeNode(2);
+        TreeNode bt = new TreeNode(4);
+        bt.left = new TreeNode(7);
+        bt.right = new TreeNode(9);
+        bt.right.right = new TreeNode(3);
+        bt.left.left = new TreeNode(10);
+        bt.left.right = new TreeNode(2);
+        bt.left.right.right = new TreeNode(6);
+        bt.left.right.right.left = new TreeNode(2);
 
 
-        BinaryTree bt2 = new BinaryTree(4);
-        bt2.root.left = new TreeNode(7);
-        bt2.root.right = new TreeNode(9);
-        bt2.root.right.right = new TreeNode(3);
-        bt2.root.left.left = new TreeNode(10);
-        bt2.root.left.right = new TreeNode(2);
-        bt2.root.left.right.right = new TreeNode(6);
-        bt2.root.left.right.right.left = new TreeNode(2);
-//        bt2.root.ln.rn.rn.ln.ln = new Nod(1);
+        TreeNode bt2 = new TreeNode(4);
+        bt2.left = new TreeNode(7);
+        bt2.right = new TreeNode(9);
+        bt2.right.right = new TreeNode(3);
+        bt2.left.left = new TreeNode(10);
+        bt2.left.right = new TreeNode(2);
+        bt2.left.right.right = new TreeNode(6);
+        bt2.left.right.right.left = new TreeNode(2);
+//        bt2.ln.rn.rn.ln.ln = new Nod(1);
 
-        BinaryTree bt3 = new BinaryTree(3);
-        bt3.root.left = new TreeNode(9);
-        bt3.root.right = new TreeNode(20);
-        bt3.root.right.right = new TreeNode(7);
-        bt3.root.right.left = new TreeNode(15);
+        TreeNode bt3 = new TreeNode(3);
+        bt3.left = new TreeNode(9);
+        bt3.right = new TreeNode(20);
+        bt3.right.right = new TreeNode(7);
+        bt3.right.left = new TreeNode(15);
 
-        printBTDepthFirst(bt.root);
+        printBTDepthFirst(bt);
         System.out.println();
+        System.out.println("----------- breadth printing --------------------------");
+        printBTBreadthFirst(bt);
         System.out.println("-------------------------------------");
-        printBTBreadthFirst(bt.root);
-        System.out.println("-------------------------------------");
-        getDepth(bt.root, 0);
+        getDepth(bt, 0);
         System.out.println(counter);
         System.out.println("-------------------------------------");
-        printBtWithStyle(bt.root);
+        printBtWithStyle(bt);
         System.out.println("-------------------------------------");
-        System.out.println(compareBinaryTreeTheSame(bt.root, bt2.root));
+        System.out.println(compareTreeNodeTheSame(bt, bt2));
         System.out.println("-------------------------------------");
-        System.out.println(breadthFirstSearch(bt.root, 6));
+        System.out.println(breadthFirstSearch(bt, 6));
 
         System.out.println("-------------------------------------");
         counter = 0;
-        getDepth(bt3.root, 0);
+        getDepth(bt3, 0);
         System.out.println(counter);
         System.out.println("-------------------------------------");
-        System.out.println(maxDepth(bt3.root));
+        System.out.println(maxDepth(bt3));
         System.out.println("-------------------------------------");
-        System.out.println(maxDepth(bt.root));
+        System.out.println(maxDepth(bt));
         System.out.println("-------------------------------------");
-        System.out.println(maximumWidthOfTree(bt.root));
+        System.out.println(maximumWidthOfTree(bt));
         System.out.println("-------------------------------------");
-        System.out.println(checkBTAreEquals(bt.root, bt2.root));
+        System.out.println(checkBTAreEquals(bt, bt2));
 
         System.out.println("--------------Pre Order Traversal -----------------------");
-        System.out.println(BTpreOrderTraversal(bt.root));
+        System.out.println(BTpreOrderTraversal(bt));
 
 
     }
@@ -77,7 +76,7 @@ public class PrintBinaryTree {
     public static void printBTDepthFirst(TreeNode root) {
         if (root == null) return;
 
-        System.out.print(root.value+ " ");
+        System.out.print(root.value + " ");
         printBTDepthFirst(root.left);
         printBTDepthFirst(root.right);
     }
@@ -131,9 +130,9 @@ public class PrintBinaryTree {
     }
 
 
-    public static boolean compareBinaryTreeTheSame(TreeNode root1, TreeNode root2) {
+    public static boolean compareTreeNodeTheSame(TreeNode root1, TreeNode root2) {
         if (root1 == null && root2 == null) return true;
-        return (root1 == null) == (root2 == null) && root1.value == root2.value && compareBinaryTreeTheSame(root1.left, root2.left) && compareBinaryTreeTheSame(root1.right, root2.right);
+        return (root1 == null) == (root2 == null) && root1.value == root2.value && compareTreeNodeTheSame(root1.left, root2.left) && compareTreeNodeTheSame(root1.right, root2.right);
     }
 
 
@@ -164,13 +163,11 @@ public class PrintBinaryTree {
         int cw = index - list.get(depth) + 1;
         long lw = widthHelper(root.left, depth + 1, index * 2, list);
         long rw = widthHelper(root.right, depth + 1, index * 2 + 1, list);
-        return Math.max(cw, Math.max(lw, rw ));
+        return Math.max(cw, Math.max(lw, rw));
     }
-    private static int ans = 0;
-
 
     public static boolean checkBTAreEquals(TreeNode root1, TreeNode root2) {
-        if ( root1 == null && root2==null) return true;
+        if (root1 == null && root2 == null) return true;
         return (root1 == null) == (root2 == null) && root1.value == root2.value && checkBTAreEquals(root1.left, root2.left) && checkBTAreEquals(root1.right, root2.right);
     }
 
@@ -178,17 +175,28 @@ public class PrintBinaryTree {
         List<Integer> list = new ArrayList();
         Stack<TreeNode> stack = new Stack();
         TreeNode node = root;
-        while(node!= null || stack.size() >0){
-            if(node != null){
+        while (node != null || stack.size() > 0) {
+            if (node != null) {
                 list.add(node.value);
                 stack.push(node);
                 node = node.left;
-            }else{
+            } else {
                 node = stack.pop();
                 node = node.right;
             }
         }
         return list;
+    }
+
+    public static class TreeNode {
+        TreeNode left = null;
+        TreeNode right = null;
+        int value;
+
+        public TreeNode(int value) {
+            this.value = value;
+        }
+
     }
 
 }

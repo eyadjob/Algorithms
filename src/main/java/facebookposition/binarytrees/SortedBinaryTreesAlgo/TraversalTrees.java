@@ -1,29 +1,39 @@
 package facebookposition.binarytrees.SortedBinaryTreesAlgo;
 
-import facebookposition.binarytrees.BinaryTree;
 import facebookposition.binarytrees.TreeNode;
+import oldstudy.BinaryTreesAreEqualDepthFirstSearch;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
 
 public class TraversalTrees {
+    
+    public static class TreeNode{
+        TreeNode left  = null;
+        TreeNode right = null;
+        int value;
+        public TreeNode(int value) {
+            this.value = value;
+        }
+        
+    }
     public static void main(String[] args) {
 
-        BinaryTree bt = new BinaryTree(1);
-        bt.root.left = new TreeNode(2);
-        bt.root.right = new TreeNode(3);
-        bt.root.left.left = new TreeNode(4);
-        bt.root.left.right = new TreeNode(5);
+        TreeNode bt = new TreeNode(1);
+        bt.left = new TreeNode(2);
+        bt.right = new TreeNode(3);
+        bt.left.left = new TreeNode(4);
+        bt.left.right = new TreeNode(5);
 
         System.out.println("------------- in order traversal : Inorder (Left, Root, Right) : 4 2 5 1 3 --------------");
-        System.out.println(inOrderTraversal(bt.root, new ArrayList<>()));
+        System.out.println(inOrderTraversal(bt, new ArrayList<>()));
         System.out.println("------------- Pre order  traversal : Preorder (Root, Left, Right) : 1 2 4 5 3 --------------");
-        System.out.println(PreOrderTraversal(bt.root, new ArrayList<>()));
+        System.out.println(PreOrderTraversal(bt, new ArrayList<>()));
         System.out.println("------------- Pre order  traversal : Preorder (Root, Left, Right) : 1 2 4 5 3 --------------");
-        System.out.println(preOrderTraversalNotRecursive(bt.root));
+        System.out.println(preOrderTraversalNotRecursive(bt));
         System.out.println("------------- Post order traversal : Postorder (Left, Right, Root) : 4 5 2 3 1--------------");
-        System.out.println(PostOrderTraversal(bt.root, new ArrayList<>()));
+        System.out.println(PostOrderTraversal(bt, new ArrayList<>()));
 
     }
 
