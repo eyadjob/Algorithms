@@ -35,7 +35,6 @@ public class ReverseOperations {
                     node = node.next;
                 }
             } else {
-
                 if (oddEnd) {
                     reverseNodes(oddStartNode,evenStart, evenEnd,evenEnd.next);
                     if (oddStartNode == null ) head = evenEnd;
@@ -48,7 +47,6 @@ public class ReverseOperations {
             }
             evenEnd = node;
             node = node.next;
-
         }
         return head;
     }
