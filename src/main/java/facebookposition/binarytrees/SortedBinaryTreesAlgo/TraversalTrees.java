@@ -1,33 +1,43 @@
 package facebookposition.binarytrees.SortedBinaryTreesAlgo;
 
-import facebookposition.binarytrees.BinaryTree;
-import facebookposition.binarytrees.TreeNod;
+import facebookposition.binarytrees.TreeNode;
+import oldstudy.BinaryTreesAreEqualDepthFirstSearch;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
 
 public class TraversalTrees {
+    
+    public static class TreeNode{
+        TreeNode left  = null;
+        TreeNode right = null;
+        int value;
+        public TreeNode(int value) {
+            this.value = value;
+        }
+        
+    }
     public static void main(String[] args) {
 
-        BinaryTree bt = new BinaryTree(1);
-        bt.root.left = new TreeNod(2);
-        bt.root.right = new TreeNod(3);
-        bt.root.left.left = new TreeNod(4);
-        bt.root.left.right = new TreeNod(5);
+        TreeNode bt = new TreeNode(1);
+        bt.left = new TreeNode(2);
+        bt.right = new TreeNode(3);
+        bt.left.left = new TreeNode(4);
+        bt.left.right = new TreeNode(5);
 
         System.out.println("------------- in order traversal : Inorder (Left, Root, Right) : 4 2 5 1 3 --------------");
-        System.out.println(inOrderTraversal(bt.root, new ArrayList<>()));
+        System.out.println(inOrderTraversal(bt, new ArrayList<>()));
         System.out.println("------------- Pre order  traversal : Preorder (Root, Left, Right) : 1 2 4 5 3 --------------");
-        System.out.println(PreOrderTraversal(bt.root, new ArrayList<>()));
+        System.out.println(PreOrderTraversal(bt, new ArrayList<>()));
         System.out.println("------------- Pre order  traversal : Preorder (Root, Left, Right) : 1 2 4 5 3 --------------");
-        System.out.println(preOrderTraversalNotRecursive(bt.root));
+        System.out.println(preOrderTraversalNotRecursive(bt));
         System.out.println("------------- Post order traversal : Postorder (Left, Right, Root) : 4 5 2 3 1--------------");
-        System.out.println(PostOrderTraversal(bt.root, new ArrayList<>()));
+        System.out.println(PostOrderTraversal(bt, new ArrayList<>()));
 
     }
 
-    public static List<Integer> inOrderTraversal(TreeNod root, List<Integer> re) {
+    public static List<Integer> inOrderTraversal(TreeNode root, List<Integer> re) {
         if (root == null) return re;
         inOrderTraversal(root.left, re);
         re.add(root.value);
@@ -35,7 +45,7 @@ public class TraversalTrees {
         return re;
     }
 
-    public static List<Integer> PreOrderTraversal(TreeNod root, List<Integer> re) {
+    public static List<Integer> PreOrderTraversal(TreeNode root, List<Integer> re) {
         if (root == null) return re;
         re.add(root.value);
         PreOrderTraversal(root.left, re);
@@ -43,7 +53,7 @@ public class TraversalTrees {
         return re;
     }
 
-    public static List<Integer> PostOrderTraversal(TreeNod root, List<Integer> re) {
+    public static List<Integer> PostOrderTraversal(TreeNode root, List<Integer> re) {
         if (root == null) return re;
         PostOrderTraversal(root.left, re);
         PostOrderTraversal(root.right, re);
@@ -52,20 +62,80 @@ public class TraversalTrees {
     }
 
 
-    public static List<Integer> preOrderTraversalNotRecursive(TreeNod root) {
+    public static List<Integer> preOrderTraversalNotRecursive(TreeNode root) {
         List<Integer> list = new ArrayList();
-        Stack<TreeNod> stack = new Stack();
-        TreeNod node = root;
-        while(node!= null || stack.size() >0){
-            if(node != null){
+        Stack<TreeNode> stack = new Stack();
+        TreeNode node = root;
+        while (node != null || stack.size() > 0) {
+            if (node != null) {
                 list.add(node.value);
                 stack.push(node);
                 node = node.left;
-            }else{
+            } else {
                 node = stack.pop();
                 node = node.right;
             }
         }
+        return list;
+    }
+
+    public static List<Integer> DFSIterativeInorderTraversal(TreeNode root) {
+        List<Integer> list = new ArrayList<>();
+        Stack<TreeNode> stack = new Stack<>();
+        while (stack.size() > 0 || root != null) {
+            while (root != null) {
+                stack.add(root);
+                root = root.left;
+            }
+            root = stack.pop();
+            list.add(root.value);
+            root = root.right;
+        }
+
+        return list;
+    }
+
+    public static List<Integer> DFSIterativePreorderTraversal(TreeNode root) {
+        List<Integer> list = new ArrayList();
+        if (root == null)
+            return list;
+        Stack<TreeNode> stack = new Stack();
+        stack.add(root);
+        while (!stack.isEmpty()) {
+            root = stack.pop();
+            list.add(root.value);
+            if (root.right != null)
+                stack.add(root.right);
+            if (root.left != null)
+                stack.add(root.left);
+        }
+
+        return list;
+
+    }
+
+    public static List<Integer> DFSIterativePostOrderTraversal(TreeNode root) {
+        List<Integer> list = new ArrayList();
+        Stack<TreeNode> stack = new Stack();
+        while (!stack.isEmpty() || root != null) {
+            if (root != null) {
+                stack.add(root);
+                root = root.left;
+            } else {
+                TreeNode temp = stack.peek().right;
+                if (temp == null) {
+                    temp = stack.pop();
+                    list.add(temp.value);
+                    while (!stack.isEmpty() && temp == stack.peek().right) {
+                        temp = stack.pop();
+                        list.add(temp.value);
+                    }
+                } else {
+                    root = temp;
+                }
+            }
+        }
+
         return list;
     }
 
