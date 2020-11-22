@@ -18,10 +18,8 @@ public class RoundRotation {
         while (i !=  0)  {
                 aChar[i] = aChar[i-1];
                 i--;
-
         }
         aChar[0] = lastCar;
-
         String string = new String(aChar);
         if (string.equals(b)) {
                 return Boolean.TRUE;
