@@ -16,12 +16,12 @@ public class MiniumWindowOptimalSolution {
     public static String minWindow(String searchString, String target) {
         Map<Character, Integer> requiredCharacters = new HashMap<>();
         Map<Character, Integer> windowCharacters = new HashMap<>();
-        int right = 0, left = 0, n = searchString.length(), charactersInWindowCriteriaMet = 0, charactersRequiredCriteria = 0, minWindowSize = Integer.MAX_VALUE;
+        int right = 0, left = 0, n = searchString.length(), charactersInWindowCriteriaMet = 0, charactersRequiredCriteria, minWindowSize = Integer.MAX_VALUE;
         String minWindowString = "";
         for (char c : target.toCharArray()) {
             putInMap(requiredCharacters, c);
         }
-
+        charactersRequiredCriteria = requiredCharacters.size();
         while (right < n) {
             char rc = searchString.charAt(right);
             putInMap(windowCharacters, rc);
