@@ -192,7 +192,6 @@ public class PrintBinaryTree {
         TreeNode left = null;
         TreeNode right = null;
         int value;
-
         public TreeNode(int value) {
             this.value = value;
         }
