@@ -3,7 +3,8 @@ package facebookposition.fortifying;
 public class StringToInteger {
     public static void main(String[] args) {
 
-
+        System.out.println((int)(Math.random() * 10000000) );
+        System.out.println("2020-12-04T22:26:08" );
         String s11 = "-5-";
         System.out.println(myAtoi(s11));
 
@@ -64,10 +65,8 @@ public class StringToInteger {
                 sb.append(c);
                 continue;
             }
-
-
         }
-        return num;
+        return 1;
     }
 
     public static int myAtoi(String s) {
