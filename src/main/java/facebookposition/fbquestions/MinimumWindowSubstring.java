@@ -8,6 +8,8 @@ import java.util.Map;
 public class MinimumWindowSubstring {
     public static void main(String[] args) {
 
+
+        System.out.println((int)Double.parseDouble("12.0"));
 //        String s = "ADOBECODEBANC", t = "ABC";
 //        System.out.println(minWindow(s, t));
 //

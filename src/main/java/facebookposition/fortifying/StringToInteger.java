@@ -3,58 +3,97 @@ package facebookposition.fortifying;
 public class StringToInteger {
     public static void main(String[] args) {
 
-        System.out.println((int)(Math.random() * 10000000) );
-        System.out.println("2020-12-04T22:26:08" );
+        String s12 = "42";
+        System.out.println(myAtoi4(s12));
+
+        String s4 = "-91283472332";
+        System.out.println(myAtoi4(s4));
+
+
         String s11 = "-5-";
-        System.out.println(myAtoi(s11));
+        System.out.println(myAtoi4(s11));
 
 
         String s10 = "   +0 123";
-        System.out.println(myAtoi(s10));
+        System.out.println(myAtoi4(s10));
 
 
         String s9 = "  -0012a42";
-        System.out.println(myAtoi(s9));
+        System.out.println(myAtoi4(s9));
 
         String s8 = " ";
-        System.out.println(myAtoi(s8));
+        System.out.println(myAtoi4(s8));
 
         String s = "   -42";
-        System.out.println(myAtoi(s));
+        System.out.println(myAtoi4(s));
 
         String s2 = "4193 with words";
-        System.out.println(myAtoi(s2));
+        System.out.println(myAtoi4(s2));
 
         String s3 = "words and 987";
-        System.out.println(myAtoi(s3));
+        System.out.println(myAtoi4(s3));
 
-        String s4 = "-91283472332";
-        System.out.println(myAtoi(s4));
 
         String s5 = "+-12";
-        System.out.println(myAtoi(s5));
+        System.out.println(myAtoi4(s5));
 
         String s6 = "+1";
-        System.out.println(myAtoi(s6));
+        System.out.println(myAtoi4(s6));
 
         String s7 = "00000-42a1234";
-        System.out.println(myAtoi(s7));
+        System.out.println(myAtoi4(s7));
     }
 
-    public static int myAtoi2(String s) {
+    public static int myAtoi4(String s) {
+        int index=0,sign =1, total=0;
+        if(s.length() == 0 ) return 0;
+
+        //remove space
+        while ( index < s.length()-1 && s.charAt(index) == ' ' )
+            index++;
+
+            //handling sign
+            if (s.charAt(index) == '+' || s.charAt(index) == '-') {
+            sign = s.charAt(index) == '+' ? 1 : -1;
+            index++;
+            }
+
+            //converting numbers and avoiding overflow
+            while ( index < s.length()) {
+                int digit = s.charAt(index) - '0';
+                if ( digit < 0 || digit > 9) break;
+
+                //check is total will be overflow after 10 times and add digit
+                if ( Integer.MAX_VALUE/10 < total ||  Integer.MAX_VALUE/10== total &&  Integer.MAX_VALUE%10 < digit) {
+                        return sign == 1 ?  Integer.MAX_VALUE : Integer.MIN_VALUE;
+                }
+                total = 10 * total +  digit;
+                index++;
+
+            }
+        return total * sign;
+    }
+
+    public static int myAtoi(String s) {
 
         if (s.length() == 0) return 0;
         StringBuilder sb = new StringBuilder();
         boolean flag = false, whiteSpaceFoundFinished = false, numberFound = false, signWasFound = false;
         for (char c : s.toCharArray()) {
             if (Character.isWhitespace(c)) {
-                continue;
+                if (whiteSpaceFoundFinished)
+                    break;
+                else
+                    continue;
             }
             whiteSpaceFoundFinished = true;
-            if (!numberFound && !signWasFound && c != '-' || c != '+') sb.append(c);
-            else
-                break;
-            signWasFound = true;
+            if ((numberFound || signWasFound) && (c == '-' || c == '+')) break;
+
+            if (c == '-' || c == '+') {
+                sb.append(c);
+                signWasFound = true;
+            }
+
             if (!Character.isDigit(c)) {
                 if (!numberFound)
                     continue;
@@ -66,10 +105,17 @@ public class StringToInteger {
                 continue;
             }
         }
-        return 1;
+        int result = 0;
+        try {
+            result = Integer.parseInt
+                    (sb.toString());
+        } catch (Exception e) {
+            result = 0;
+        }
+        return result;
     }
 
-    public static int myAtoi(String s) {
+    public static int myAtoi3(String s) {
         if (s.length() == 0) return 0;
         StringBuilder sb = new StringBuilder();
         boolean flag = false, whiteSpaceFoundFinished = false, numberFound = false, signWasFound = false;
