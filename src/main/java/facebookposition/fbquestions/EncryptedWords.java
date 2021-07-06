@@ -34,13 +34,12 @@ public class EncryptedWords {
 
     public static void findEncryptedWordRec(String s, int start, int end) {
         int charIndex = (end - start) % 2 == 1 ? (end + start) / 2 : ((end + start) / 2) - 1;
-        if (end - start <= 0) {
+        if (end - start <= 0)
             return;
-        } else {
+        else
             sb.append(s.charAt(charIndex));
-        }
         findEncryptedWordRec(s, start, charIndex);
-        findEncryptedWordRec(s, charIndex + 1, end );
+        findEncryptedWordRec(s, charIndex + 1, end);
     }
 
 }
